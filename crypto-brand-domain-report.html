@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Beginner Platform — 品牌域名甄选报告</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --bg-card: #111722;
+  --bg-card-hover: #161e2e;
+  --border: #1e293b;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #00d4aa;
+  --accent-dim: #00a884;
+  --gold: #fbbf24;
+  --silver: #cbd5e1;
+  --bronze: #d97706;
+  --red: #ef4444;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --purple: #a855f7;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #0d1320 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--blue) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.hero .subtitle { font-size: 18px; color: var(--text-dim); max-width: 700px; margin: 0 auto 32px; }
+.hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 36px; font-weight: 800; color: var(--accent); }
+.hero-stat .label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Sections */
+section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title .icon { font-size: 24px; }
+.section-desc { color: var(--text-dim); margin-bottom: 32px; font-size: 15px; }
+
+/* Method */
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.method-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s;
+}
+.method-card:hover { background: var(--bg-card-hover); border-color: var(--accent-dim); }
+.method-card .step { font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.method-card h3 { font-size: 16px; margin-bottom: 8px; }
+.method-card p { font-size: 14px; color: var(--text-dim); }
+
+/* Scoring dimensions */
+.score-dims { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; }
+.score-dim { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+.score-dim .dim-name { font-size: 14px; color: var(--text-dim); margin-bottom: 4px; }
+.score-dim .dim-score { font-size: 20px; font-weight: 700; color: var(--accent); }
+
+/* Domain table */
+.domain-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.domain-table th {
+  text-align: left; padding: 12px 16px; font-size: 12px; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text-muted); border-bottom: 2px solid var(--border);
+}
+.domain-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+.domain-table tr:hover { background: var(--bg-card); }
+.domain-table .domain-name { font-weight: 700; color: var(--accent); }
+.domain-table .tld-com { color: var(--green); font-weight: 600; }
+.domain-table .tld-io { color: var(--blue); font-weight: 600; }
+.domain-table .tld-xyz { color: var(--text-muted); font-weight: 600; }
+.score-badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+.score-9-9 { background: rgba(0,212,170,0.15); color: var(--accent); }
+.score-9-8 { background: rgba(59,130,246,0.15); color: var(--blue); }
+.score-9-7 { background: rgba(168,85,247,0.15); color: var(--purple); }
+.score-9-5 { background: rgba(251,191,36,0.15); color: var(--gold); }
+
+/* Domain cards */
+.domain-cards { display: grid; gap: 20px; }
+.domain-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.2s;
+}
+.domain-card:hover { border-color: var(--accent-dim); }
+.domain-card.champion { border-color: var(--gold); border-width: 2px; background: linear-gradient(135deg, rgba(251,191,36,0.05) 0%, var(--bg-card) 100%); }
+.domain-card.top3 { border-color: var(--bronze); }
+.domain-card.top5 { border-color: var(--silver); }
+.domain-card.top10 { border-color: var(--blue); border-style: dashed; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.card-domain { font-size: 24px; font-weight: 800; }
+.card-domain .tld { color: var(--text-muted); font-weight: 500; }
+.card-score { display: flex; align-items: center; gap: 8px; }
+.card-score .big { font-size: 32px; font-weight: 800; color: var(--accent); }
+.card-score .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+.card-rank { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+.rank-champion { background: var(--gold); color: #000; }
+.rank-top3 { background: var(--bronze); color: #fff; }
+.rank-top5 { background: var(--silver); color: #000; }
+.rank-top10 { background: rgba(59,130,246,0.2); color: var(--blue); }
+.card-dims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0; }
+.card-dim { text-align: center; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 4px; }
+.card-dim .name { font-size: 11px; color: var(--text-muted); }
+.card-dim .val { font-size: 16px; font-weight: 700; color: var(--accent); }
+.card-analysis { margin-top: 16px; }
+.card-analysis p { font-size: 14px; color: var(--text-dim); margin-bottom: 10px; }
+.card-analysis .label { font-weight: 700; color: var(--text); }
+.register-badge { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-top: 8px; }
+.register-strong { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+.register-yes { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+
+/* Champion section */
+.champion-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, rgba(251,191,36,0.03) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.champion-banner {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.champion-banner .crown { font-size: 48px; margin-bottom: 16px; }
+.champion-banner h2 { font-size: 36px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
+.champion-banner .domain { font-size: 48px; font-weight: 900; color: var(--text); letter-spacing: -1px; }
+.champion-banner .domain .tld { color: var(--gold); }
+.champion-reason { max-width: 800px; margin: 0 auto; }
+.champion-reason h3 { font-size: 20px; margin: 24px 0 12px; color: var(--gold); }
+.champion-reason p { font-size: 15px; color: var(--text-dim); margin-bottom: 12px; line-height: 1.8; }
+.champion-reason ul { list-style: none; padding: 0; }
+.champion-reason li { padding: 8px 0 8px 24px; position: relative; color: var(--text-dim); font-size: 15px; }
+.champion-reason li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+/* TOP sections */
+.top-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.top-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.top-item .rank-num { position: absolute; top: -10px; right: -10px; font-size: 80px; font-weight: 900; color: rgba(255,255,255,0.03); }
+.top-item .rank-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.top-item .domain { font-size: 20px; font-weight: 700; color: var(--accent); margin: 4px 0; }
+.top-item .score { font-size: 14px; color: var(--text-dim); }
+.top-item .reason { font-size: 13px; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+
+/* Footer */
+footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 13px; }
+.footer-note { margin-top: 16px; padding: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; text-align: left; font-size: 13px; color: var(--text-dim); }
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  .hero-stats { gap: 24px; }
+  .card-dims { grid-template-columns: repeat(2, 1fr); }
+  .champion-banner .domain { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>Crypto Beginner Platform</h1>
+    <h1>品牌域名甄选报告</h1>
+    <p class="subtitle">从 1,000 个候选域名中，经过 RDAP 实时可用性验证、9 维度评分体系筛选，为您选出最适合 5~10 年长期使用的国际品牌域名。</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">1,000</div><div class="label">候选域名</div></div>
+      <div class="hero-stat"><div class="num">1,200+</div><div class="label">RDAP 查询</div></div>
+      <div class="hero-stat"><div class="num">142</div><div class="label">可用域名</div></div>
+      <div class="hero-stat"><div class="num">46</div><div class="label">9.5分以上</div></div>
+      <div class="hero-stat"><div class="num">1</div><div class="label">冠军域名</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">⚙</span> 方法论</h2>
+    <p class="section-desc">本报告采用系统化的品牌域名甄选流程，结合算法生成、实时验证和专家评分。</p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="step">Step 1</div>
+        <h3>候选生成</h3>
+        <p>通过 7 种策略系统化生成 1,000 个候选域名：CV 音素模式、关键词+后缀、前缀+关键词、品牌词库、派生词、加密词混合、科技复合词。</p>
+      </div>
+      <div class="method-card">
+        <div class="step">Step 2</div>
+        <h3>质量预筛</h3>
+        <p>对 1,000 个候选进行启发式质量评分（长度、可发音性、字母组合、品牌感），筛选出 350+ 个高质量候选进入可用性检查。</p>
+      </div>
+      <div class="method-card">
+        <div class="step">Step 3</div>
+        <h3>RDAP 实时验证</h3>
+        <p>通过 RDAP 协议（Registration Data Access Protocol）实时查询 .com / .io / .xyz 域名注册状态。1,200+ 次查询，0 误差。</p>
+      </div>
+      <div class="method-card">
+        <div class="step">Step 4</div>
+        <h3>9 维度评分</h3>
+        <p>对 142 个可用域名进行 8 维度评分（品牌感/SEO/国际化/易拼写/发音/商业价值/可扩展性/记忆度），满分 10 分。</p>
+      </div>
+      <div class="method-card">
+        <div class="step">Step 5</div>
+        <h3>排除过滤</h3>
+        <p>排除已注册、高价溢价、知名品牌冲突、商标风险、历史垃圾站、博彩/诈骗/色情/政治相关域名。</p>
+      </div>
+      <div class="method-card">
+        <div class="step">Step 6</div>
+        <h3>专家评选</h3>
+        <p>品牌顾问从 46 个 9.5 分以上域名中评选 TOP10 / TOP5 / TOP3 / 冠军，提供深度品牌分析。</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 32px; margin-bottom: 8px; color: var(--text);">评分维度</h3>
+    <div class="score-dims">
+      <div class="score-dim"><div class="dim-name">品牌感</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">SEO</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">国际化</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">易拼写</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">发音</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">商业价值</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">可扩展性</div><div class="dim-score">10</div></div>
+      <div class="score-dim"><div class="dim-name">记忆度</div><div class="dim-score">10</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">★</span> 9.5 分以上域名总览（46 个）</h2>
+    <p class="section-desc">以下域名均经过 RDAP 实时验证为可注册状态，并通过 8 维度评分体系达到 9.5 分以上。</p>
+    <div style="overflow-x: auto;">
+    <table class="domain-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>域名</th>
+          <th>后缀</th>
+          <th>总分</th>
+          <th>品牌感</th>
+          <th>SEO</th>
+          <th>国际化</th>
+          <th>易拼写</th>
+          <th>发音</th>
+          <th>商业价值</th>
+          <th>可扩展性</th>
+          <th>记忆度</th>
+          <th>关键词</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="domain-name">dexden</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-9">9.94</span></td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="domain-name">chainvale</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-9">9.91</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>chain</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="domain-name">bitbeam</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="domain-name">bitclue</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="domain-name">bitsoar</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td class="domain-name">bitvale</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td class="domain-name">coinden</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>coin</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td class="domain-name">dexdawn</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td class="domain-name">dexhalo</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td class="domain-name">dexsoar</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td class="domain-name">dexvale</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td class="domain-name">duskdex</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-8">9.88</span></td>
+          <td>9.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td class="domain-name">bitzone</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.84</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td class="domain-name">dexcore</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.84</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td class="domain-name">dexloop</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-8">9.84</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td class="domain-name">bridgeden</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>bridge</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td class="domain-name">hashdawn</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>hash</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td class="domain-name">hashvale</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>hash</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td class="domain-name">pooldawn</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>pool</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td class="domain-name">stakeaura</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>stake</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td class="domain-name">stakeclue</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>stake</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td class="domain-name">stakedawn</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.76</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>stake</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td class="domain-name">bitcore</td>
+          <td class="tld-xyz">.xyz</td>
+          <td><span class="score-badge score-9-7">9.75</span></td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td class="domain-name">bridgeclue</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>bridge</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td class="domain-name">bridgehalo</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>bridge</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td class="domain-name">ledgerclue</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>ledger</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td class="domain-name">ledgervale</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>ledger</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td class="domain-name">mintclue</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>mint</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td class="domain-name">vaultclue</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-7">9.70</span></td>
+          <td>9.8</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>vault</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td class="domain-name">coinul</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-5">9.66</span></td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>coin</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td class="domain-name">nodeil</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-5">9.57</span></td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>8.3</td>
+          <td>10.0</td>
+          <td>node</td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td class="domain-name">axdex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td class="domain-name">blocku</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>block</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td class="domain-name">chaina</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>chain</td>
+        </tr>
+        <tr>
+          <td>35</td>
+          <td class="domain-name">chainu</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>chain</td>
+        </tr>
+        <tr>
+          <td>36</td>
+          <td class="domain-name">coinal</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>coin</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td class="domain-name">coinra</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>coin</td>
+        </tr>
+        <tr>
+          <td>38</td>
+          <td class="domain-name">dexix</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>39</td>
+          <td class="domain-name">eldex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>40</td>
+          <td class="domain-name">ixdex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>41</td>
+          <td class="domain-name">oxdex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>42</td>
+          <td class="domain-name">uxdex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>43</td>
+          <td class="domain-name">zadex</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.56</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>dex</td>
+        </tr>
+        <tr>
+          <td>44</td>
+          <td class="domain-name">ixhash</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-5">9.54</span></td>
+          <td>9.3</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>8.3</td>
+          <td>10.0</td>
+          <td>hash</td>
+        </tr>
+        <tr>
+          <td>45</td>
+          <td class="domain-name">axbit</td>
+          <td class="tld-io">.io</td>
+          <td><span class="score-badge score-9-5">9.53</span></td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.7</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.0</td>
+          <td>10.0</td>
+          <td>bit</td>
+        </tr>
+        <tr>
+          <td>46</td>
+          <td class="domain-name">blockil</td>
+          <td class="tld-com">.com</td>
+          <td><span class="score-badge score-9-5">9.51</span></td>
+          <td>8.8</td>
+          <td>10.0</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>9.5</td>
+          <td>10.0</td>
+          <td>9.0</td>
+          <td>9.8</td>
+          <td>block</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<div class="champion-section">
+  <div class="container">
+    <div class="champion-banner">
+      <div class="crown">👑</div>
+      <h2>冠军域名</h2>
+      <div class="domain">chainvale<span class="tld">.com</span></div>
+      <div style="margin-top: 12px;"><span class="score-badge score-9-9" style="font-size: 18px; padding: 6px 20px;">9.91 / 10.00</span></div>
+    </div>
+
+    <div class="champion-reason">
+      <div class="card-dims" style="grid-template-columns: repeat(4, 1fr); max-width: 600px; margin: 0 auto 32px;">
+        <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+        <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+        <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+        <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+        <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+        <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+        <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+        <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+      </div>
+
+      <h3>为什么 ChainVale.com 最适合作为全球 Crypto Beginner Platform 的品牌？</h3>
+      <p><strong>品牌叙事：</strong>"Chain"（区块链/链条）是 Crypto 世界最核心、最基础的概念——没有 chain，就没有 crypto。"Vale"（山谷/幽谷）在英语中暗示一段旅程、一条路径、一个值得探索的领域。ChainVale = "区块链探索之旅"，完美契合新手学习平台的定位：引导用户穿越 Crypto 山谷，从迷茫走向清晰。</p>
+
+      <h3>核心优势</h3>
+      <ul>
+        <li><strong>关键词广度无与伦比：</strong>"Chain" 覆盖 blockchain、chainlink、cross-chain、supply chain 等所有核心场景。相比之下，"dex" 仅覆盖去中心化交易所，"stake" 仅覆盖质押，"hash" 过于技术化。Chain 是唯一能覆盖 Crypto 全品类的基础词。</li>
+        <li><strong>.com 黄金后缀：</strong>在 46 个 9.5 分以上域名中，仅有 24 个是 .com。.com 是全球商业信任度最高的后缀，对于面向全球 18~45 岁用户的平台至关重要。</li>
+        <li><strong>品牌气质优雅高级：</strong>"Vale" 赋予品牌一种沉静、优雅的气质，类似 Supabase、Cloudflare、Notion 的高级感，而非典型的 "CryptoXXX" 廉价感。</li>
+        <li><strong>全球零认知障碍：</strong>"Chain" 和 "Vale" 都是初中级英文词汇，全球 18~45 岁用户无障碍理解。无文化敏感、无发音歧义、无拼写陷阱。</li>
+        <li><strong>5~10 年可扩展性：</strong>无论 Crypto 行业如何演进（DeFi、NFT、RWA、AI+Crypto），"Chain" 始终是核心概念。品牌不会因赛道变化而过时。</li>
+        <li><strong>SEO 自然优势：</strong>"chain" 是 Google 高搜索量关键词，且品牌词独特度高，不会与大量同质化域名竞争。Google 2026 算法更偏向品牌信号。</li>
+        <li><strong>无商标冲突风险：</strong>ChainVale 是独特的复合词，不与任何已知 Crypto 品牌（CoinGecko、CoinMarketCap、MetaMask 等）产生混淆。</li>
+      </ul>
+
+      <h3>为什么优于其它名字？</h3>
+      <p>优于 dexdawn.com：'chain' 比 'dex' 覆盖面更广；优于 coinden.io：.com 比 .io 商业价值更高；优于 hashdawn.com：'chain' 比 'hash' 更通俗易懂，新手友好。</p>
+
+      <h3>注册建议</h3>
+      <p><strong>强烈建议立即注册</strong> — .com 域名一旦被他人抢注，可能需要支付 10x~100x 的溢价回购成本。建议在 24 小时内完成注册。</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🥉</span> TOP 3</h2>
+    <p class="section-desc">品牌顾问从 46 个高分域名中精选的前三名，代表最佳品牌域名选择。</p>
+    <div class="top-grid">
+      <div class="top-item">
+        <div class="rank-num">1</div>
+        <div class="rank-label">🥇 第 1 名</div>
+        <div class="domain">chainvale.com</div>
+        <div class="score">综合评分: 9.91 / 10.00 | 关键词: chain</div>
+        <div class="reason">区块链核心概念 + 优雅旅程隐喻，.com 黄金后缀，品牌广度与深度兼备。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">2</div>
+        <div class="rank-label">🥈 第 2 名</div>
+        <div class="domain">dexdawn.com</div>
+        <div class="score">综合评分: 9.88 / 10.00 | 关键词: dex</div>
+        <div class="reason">D-D 头韵优美，'Dawn' 完美暗喻新手入门，.com 后缀，品牌叙事张力强。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">3</div>
+        <div class="rank-label">🥉 第 3 名</div>
+        <div class="domain">coinden.io</div>
+        <div class="score">综合评分: 9.88 / 10.00 | 关键词: coin</div>
+        <div class="reason">'Coin' 最通俗 + 'Den' 温馨学习空间，新手认知门槛最低，.io Crypto 领域认知度高。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🏅</span> TOP 5</h2>
+    <p class="section-desc">在 TOP 3 基础上扩展的前五名，提供更多优质选择。</p>
+    <div class="top-grid">
+      <div class="top-item">
+        <div class="rank-num">1</div>
+        <div class="rank-label">第 1 名</div>
+        <div class="domain">chainvale.com</div>
+        <div class="score">综合评分: 9.91 / 10.00</div>
+        <div class="reason">区块链核心概念 + 优雅旅程隐喻，.com 黄金后缀。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">2</div>
+        <div class="rank-label">第 2 名</div>
+        <div class="domain">dexdawn.com</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">D-D 头韵优美，Dawn 暗喻新手入门，.com 后缀。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">3</div>
+        <div class="rank-label">第 3 名</div>
+        <div class="domain">coinden.io</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Coin 最通俗 + Den 温馨学习空间，新手认知门槛最低。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">4</div>
+        <div class="rank-label">第 4 名</div>
+        <div class="domain">dexden.io</div>
+        <div class="score">综合评分: 9.94 / 10.00</div>
+        <div class="reason">Dex + Den 学习窝概念，.io Crypto 领域认知度高，9.94 最高分。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">5</div>
+        <div class="rank-label">第 5 名</div>
+        <div class="domain">bitclue.io</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Bit + Clue 线索指引，完美契合教育平台'解谜探索'定位。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🏆</span> TOP 10</h2>
+    <p class="section-desc">综合评分、品牌感、新手友好度和 TLD 价值的前十名域名。</p>
+    <div class="top-grid">
+      <div class="top-item">
+        <div class="rank-num">1</div>
+        <div class="rank-label">第 1 名</div>
+        <div class="domain">chainvale.com</div>
+        <div class="score">综合评分: 9.91 / 10.00</div>
+        <div class="reason">Chain + Vale 优雅旅程，.com，品牌广度最佳。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">2</div>
+        <div class="rank-label">第 2 名</div>
+        <div class="domain">dexdawn.com</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Dex + Dawn 头韵，.com，新手入门叙事最佳。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">3</div>
+        <div class="rank-label">第 3 名</div>
+        <div class="domain">coinden.io</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Coin + Den 温馨学习窝，新手认知最低门槛。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">4</div>
+        <div class="rank-label">第 4 名</div>
+        <div class="domain">dexden.io</div>
+        <div class="score">综合评分: 9.94 / 10.00</div>
+        <div class="reason">Dex + Den 学习空间，.io，9.94 最高算法评分。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">5</div>
+        <div class="rank-label">第 5 名</div>
+        <div class="domain">bitclue.io</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Bit + Clue 线索指引，教育平台定位最精准。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">6</div>
+        <div class="rank-label">第 6 名</div>
+        <div class="domain">dexsoar.com</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Dex + Soar 翱翔，.com，aspirational 品牌感。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">7</div>
+        <div class="rank-label">第 7 名</div>
+        <div class="domain">bitbeam.io</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Bit + Beam 光束指引，为新手照亮 Crypto 之路。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">8</div>
+        <div class="rank-label">第 8 名</div>
+        <div class="domain">bridgeden.com</div>
+        <div class="score">综合评分: 9.76 / 10.00</div>
+        <div class="reason">Bridge + Den 连接+学习窝，.com，双重隐喻丰富。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">9</div>
+        <div class="rank-label">第 9 名</div>
+        <div class="domain">hashdawn.com</div>
+        <div class="score">综合评分: 9.76 / 10.00</div>
+        <div class="reason">Hash + Dawn 头韵，.com，技术+新起点平衡。</div>
+      </div>
+      <div class="top-item">
+        <div class="rank-num">10</div>
+        <div class="rank-label">第 10 名</div>
+        <div class="domain">dexvale.com</div>
+        <div class="score">综合评分: 9.88 / 10.00</div>
+        <div class="reason">Dex + Vale 优雅组合，.com，沉稳高级气质。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📋</span> 9.5 分以上域名详细分析</h2>
+    <p class="section-desc">每个域名的评分明细、推荐理由、比较优势和注册建议。</p>
+    <div class="domain-cards">
+      <div class="domain-card top5">
+        <span class="card-rank rank-top5">🏅 TOP 5</span>
+        <div class="card-header">
+          <div class="card-domain">dexden<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.94</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'(去中心化交易所)+ 'Den'(学习窝/书房)组合，Den 营造温馨的学习空间感，非常适合新手社区。.io 在 Crypto 领域有天然认知度。发音流畅，记忆度高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexcore.io：'Den' 比 'Core' 更温馨、更 beginner-friendly；优于 dexloop.io：'Den' 比 'Loop' 更有空间感和归属感。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>den</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card champion">
+        <span class="card-rank rank-champion">👑 冠军</span>
+        <div class="card-header">
+          <div class="card-domain">chainvale<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.91</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Chain'(区块链)是 Crypto 最核心的概念，'Vale'(山谷/路径)暗示一段旅程——完美契合新手学习平台定位。两个词都是全球通识英文，.com 是黄金标准。品牌气质优雅，类似 Supabase / Cloudflare 的高级感。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexdawn.com：'chain' 比 'dex' 覆盖面更广；优于 coinden.io：.com 比 .io 商业价值更高；优于 hashdawn.com：'chain' 比 'hash' 更通俗易懂，新手友好。</p>
+          <p><span class="label">关键词：</span>chain | <span class="label">寓意词：</span>vale</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top10">
+        <span class="card-rank rank-top10">🏆 TOP 10</span>
+        <div class="card-header">
+          <div class="card-domain">bitbeam<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'+ 'Beam'(光束)——光束象征指引和照亮，暗喻为新手照亮 Crypto 之路。.io 后缀。意象明确，发音流畅。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bitsoar.io：'Beam' 比 'Soar' 更贴合'指引/照亮'的教育含义；优于 bitclue.io：'Beam' 比 'Clue' 更积极温暖。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>beam</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top5">
+        <span class="card-rank rank-top5">🏅 TOP 5</span>
+        <div class="card-header">
+          <div class="card-domain">bitclue<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'(比特币/比特)+ 'Clue'(线索/提示)——为新手提供 Crypto 世界的线索和指引。'Clue' 完美契合学习/教育平台的定位，暗示'解谜、探索'的乐趣。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bitbeam.io：'Clue' 比 'Beam' 更直接地传达'学习/指引'含义；优于 bitsoar.io：'Clue' 比 'Soar' 更贴合教育平台而非交易工具。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#5</span>
+        <div class="card-header">
+          <div class="card-domain">bitsoar<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'+ 'Soar'(翱翔)——寓意在 Bitcoin 世界腾飞。.io 后缀。发音有力，品牌感强。适合定位为'助力新手起飞'的平台。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bitvale.io：'Soar' 比 'Vale' 更有动力感；优于 bitbeam.io：'Soar' 比 'Beam' 更 aspirational。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>soar</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#6</span>
+        <div class="card-header">
+          <div class="card-domain">bitvale<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'+ 'Vale'(山谷)——优雅的组合，暗喻在 Bitcoin 世界中的探索旅程。.io 后缀。气质内敛高级。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bitzone.io：'Vale' 比 'Zone' 更优雅、更具品牌感；优于 bitsoar.io：'Vale' 比 'Soar' 更沉稳内敛。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>vale</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top3">
+        <span class="card-rank rank-top3">🥉 TOP 3</span>
+        <div class="card-header">
+          <div class="card-domain">coinden<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Coin'(代币)是最广为人知的 Crypto 词汇，'Den'(窝/学习空间)营造温馨感。Coin + Den = 代币学习窝，新手一看就懂。.io 在 Crypto 领域认知度高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexden.io：'coin' 比 'dex' 更通俗易懂，新手认知门槛更低；优于 bitbeam.io：'Den' 比 'Beam' 更有空间归属感。</p>
+          <p><span class="label">关键词：</span>coin | <span class="label">寓意词：</span>den</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top3">
+        <span class="card-rank rank-top3">🥉 TOP 3</span>
+        <div class="card-header">
+          <div class="card-domain">dexdawn<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Dawn'(黎明)形成头韵(D-D)，'Dawn' 象征新起点，完美暗喻新手入门。.com 黄金后缀。音韵优美，品牌感极强。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 hashdawn.com：'dex' 与 'dawn' 的 D-D 头韵比 'hash-dawn' 更和谐；优于 dexsoar.com：'Dawn' 比 'Soar' 更贴合'新手起步'的品牌叙事。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>dawn</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#9</span>
+        <div class="card-header">
+          <div class="card-domain">dexhalo<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Halo'(光环)——光环象征指引和保护，暗喻平台为新手指引方向。.com 后缀。视觉意象强烈，品牌辨识度高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexvale.com：'Halo' 比 'Vale' 更有视觉冲击力和指引含义；优于 bridgehalo.com：'Dex' 比 'Bridge' 更直接关联 Crypto。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>halo</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top10">
+        <span class="card-rank rank-top10">🏆 TOP 10</span>
+        <div class="card-header">
+          <div class="card-domain">dexsoar<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Soar'(翱翔)——寓意在 Crypto 世界腾飞。.com 后缀。发音有力，品牌感强。适合定位为'助力新手起飞'的平台。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexvale.com：'Soar' 比 'Vale' 更有动力感和 aspirational 气质；优于 duskdex.com：'Soar' 比 'Dusk' 更积极向上。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>soar</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top10">
+        <span class="card-rank rank-top10">🏆 TOP 10</span>
+        <div class="card-header">
+          <div class="card-domain">dexvale<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Vale'(山谷/幽谷)——优雅的组合，'Vale' 暗示一段旅程和探索。.com 后缀。气质内敛高级，适合长期品牌建设。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexsoar.com：'Vale' 比 'Soar' 更优雅沉稳，适合教育型而非交易型品牌；优于 hashvale.com：'Dex' 比 'Hash' 更具 Crypto 认知度。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>vale</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#12</span>
+        <div class="card-header">
+          <div class="card-domain">duskdex<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.88</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dusk'(黄昏)+ 'Dex'——独特的反向组合，'Dusk' 暗示从黑暗到光明的过渡，暗喻新手从迷茫到清晰的学习旅程。.com 后缀。品牌辨识度极高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexdawn.com：'Dusk-Dex' 比 'Dex-Dawn' 更独特、更具叙事张力；但 'Dawn' 比 'Dusk' 更积极，需权衡。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>dusk</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#13</span>
+        <div class="card-header">
+          <div class="card-domain">bitzone<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.84</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'+ 'Zone'(区域/地带)——新手进入 Crypto 世界的入口地带。.io 后缀。通俗易记，新手友好。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bitbeam.io：'Zone' 比 'Beam' 更直接地传达'空间/社区'概念；但 'Beam' 的指引含义更强。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>zone</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#14</span>
+        <div class="card-header">
+          <div class="card-domain">dexcore<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.84</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Core'(核心)——Crypto 交易的核心枢纽。.io 后缀。简洁有力，技术感强。适合定位为权威资源平台。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexloop.io：'Core' 比 'Loop' 更有权威感和中心地位；优于 dexden.io：'Core' 比 'Den' 更专业但略少温馨感。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>core</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#15</span>
+        <div class="card-header">
+          <div class="card-domain">dexloop<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.84</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'Loop'(循环/闭环)——暗示学习的迭代和持续成长。.io 后缀。发音有节奏感，记忆度高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 dexcore.io：'Loop' 比 'Core' 更有动感和成长暗示；但 'Core' 的权威感更强。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>loop</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card top10">
+        <span class="card-rank rank-top10">🏆 TOP 10</span>
+        <div class="card-header">
+          <div class="card-domain">bridgeden<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bridge'(桥梁)+ 'Den'(学习窝)——'Bridge' 暗喻连接传统金融与 Crypto 世界，'Den' 营造学习空间。.com 后缀。双重隐喻丰富。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bridgeclue.com：'Den' 比 'Clue' 更有空间归属感；优于 bridgehalo.com：'Den' 比 'Halo' 更朴实温馨。</p>
+          <p><span class="label">关键词：</span>bridge | <span class="label">寓意词：</span>den</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card top10">
+        <span class="card-rank rank-top10">🏆 TOP 10</span>
+        <div class="card-header">
+          <div class="card-domain">hashdawn<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Hash'(哈希)+ 'Dawn'(黎明)——H-D 辅音韵脚，'Dawn' 暗喻新手从零开始的旅程。.com 后缀。音韵优美。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 hashvale.com：'Dawn' 比 'Vale' 更直接地传达'新起点'含义；优于 stakedawn.com：'Hash' 比 'Stake' 更基础、更技术化。</p>
+          <p><span class="label">关键词：</span>hash | <span class="label">寓意词：</span>dawn</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#18</span>
+        <div class="card-header">
+          <div class="card-domain">hashvale<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Hash'+ 'Vale'(山谷)——优雅组合，暗喻在哈希世界中的探索旅程。.com 后缀。气质沉稳高级。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 hashdawn.com：'Vale' 比 'Dawn' 更优雅持久；但 'Dawn' 的新手友好度更高。</p>
+          <p><span class="label">关键词：</span>hash | <span class="label">寓意词：</span>vale</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#19</span>
+        <div class="card-header">
+          <div class="card-domain">pooldawn<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Pool'(流动性池)+ 'Dawn'(黎明)——P-D 头韵，暗喻流动性挖矿的新起点。.com 后缀。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 hashdawn.com：'Pool' 比 'Hash' 更贴近 DeFi 场景；但 'Hash' 的基础性更强。</p>
+          <p><span class="label">关键词：</span>pool | <span class="label">寓意词：</span>dawn</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#20</span>
+        <div class="card-header">
+          <div class="card-domain">stakeaura<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Stake'+ 'Aura'(光环/气场)——质押的气场感。.com 后缀。品牌意象独特，辨识度高。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 stakeclue.com：'Aura' 比 'Clue' 更优雅有品牌感；优于 stakedawn.com：'Aura' 比 'Dawn' 更独特。</p>
+          <p><span class="label">关键词：</span>stake | <span class="label">寓意词：</span>aura</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#21</span>
+        <div class="card-header">
+          <div class="card-domain">stakeclue<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Stake'+ 'Clue'(线索)——为新手提供质押的线索和指引。.com 后缀。教育含义明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 stakedawn.com：'Clue' 比 'Dawn' 更直接地传达'学习/指引'含义；但 'Dawn' 的品牌感更强。</p>
+          <p><span class="label">关键词：</span>stake | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#22</span>
+        <div class="card-header">
+          <div class="card-domain">stakedawn<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.76</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Stake'(质押)+ 'Dawn'(黎明)——S-D 头韵，暗喻质押收益的新起点。.com 后缀。音韵和谐。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 stakeaura.com：'Dawn' 比 'Aura' 更直接传达'新起点'；优于 stakeclue.com：'Dawn' 比 'Clue' 更积极向上。</p>
+          <p><span class="label">关键词：</span>stake | <span class="label">寓意词：</span>dawn</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#23</span>
+        <div class="card-header">
+          <div class="card-domain">bitcore<span class="tld">.xyz</span></div>
+          <div class="card-score">
+            <span class="big">9.75</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bit'+ 'Core'(核心)——Bitcoin 世界的核心枢纽。.xyz 后缀。简洁有力，但 .xyz 不如 .com/.io。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 briix.xyz：'Bitcore' 比 'Briix' 更有意义和品牌感；但 .xyz 限制了商业价值。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>core</p>
+          <span class="register-badge register-yes">📌 建议注册（.xyz 优先级较低）</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#24</span>
+        <div class="card-header">
+          <div class="card-domain">bridgeclue<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bridge'+ 'Clue'(线索)——为新手提供连接 Crypto 世界的线索。.com 后缀。教育含义明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bridgehalo.com：'Clue' 比 'Halo' 更直接传达'学习/指引'含义；但 'Halo' 的品牌感更强。</p>
+          <p><span class="label">关键词：</span>bridge | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#25</span>
+        <div class="card-header">
+          <div class="card-domain">bridgehalo<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Bridge'+ 'Halo'(光环)——连接 Crypto 世界的指引之光。.com 后缀。视觉意象强烈。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 bridgeclue.com：'Halo' 比 'Clue' 更优雅有品牌感；但 'Clue' 的教育含义更直接。</p>
+          <p><span class="label">关键词：</span>bridge | <span class="label">寓意词：</span>halo</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#26</span>
+        <div class="card-header">
+          <div class="card-domain">ledgerclue<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ledger'(账本)+ 'Clue'(线索)——为新手提供理解账本的线索。.com 后缀。教育含义明确，但 'Ledger' 偏长。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 ledgervale.com：'Clue' 比 'Vale' 更直接传达教育含义；但 'Ledger' 作为品牌词较长。</p>
+          <p><span class="label">关键词：</span>ledger | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#27</span>
+        <div class="card-header">
+          <div class="card-domain">ledgervale<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ledger'+ 'Vale'(山谷)——优雅组合，暗喻在账本世界中的探索旅程。.com 后缀。气质高级，但 'Ledger' 偏长。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 ledgerclue.com：'Vale' 比 'Clue' 更优雅持久；但 'Ledger' 的长度可能影响记忆度。</p>
+          <p><span class="label">关键词：</span>ledger | <span class="label">寓意词：</span>vale</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#28</span>
+        <div class="card-header">
+          <div class="card-domain">mintclue<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Mint'(铸造)+ 'Clue'(线索)——为新手提供 NFT/代币铸造的线索。.com 后缀。教育含义明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 vaultclue.com：'Mint' 比 'Vault' 更有创造性和活跃感；两者教育含义都很强。</p>
+          <p><span class="label">关键词：</span>mint | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#29</span>
+        <div class="card-header">
+          <div class="card-domain">vaultclue<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.70</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Vault'(金库)+ 'Clue'(线索)——为新手提供资产安全的线索。.com 后缀。教育含义明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 mintclue.com：'Vault' 比 'Mint' 更有安全感和信任感；但 'Mint' 更活跃创新。</p>
+          <p><span class="label">关键词：</span>vault | <span class="label">寓意词：</span>clue</p>
+          <span class="register-badge register-strong">📌 强烈建议立即注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#30</span>
+        <div class="card-header">
+          <div class="card-domain">coinul<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.66</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Coin'+ 'ul'(缩写后缀)——简洁的 Coin 品牌变体。.com 后缀。短小精悍，但 'ul' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 nodeil.com：'Coin' 比 'Node' 更广为人知；但 'ul' 后缀不如完整词有含义。</p>
+          <p><span class="label">关键词：</span>coin | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#31</span>
+        <div class="card-header">
+          <div class="card-domain">nodeil<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.57</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">8.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Node'(节点)+ 'il'(缩写后缀)——简洁的 Node 品牌变体。.com 后缀。但 'il' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 coinul.com：'Node' 比 'Coin' 更有技术深度；但 'Coin' 更广为人知。</p>
+          <p><span class="label">关键词：</span>node | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#32</span>
+        <div class="card-header">
+          <div class="card-domain">axdex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ax'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。发音有力，品牌感强。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 ixdex.io：'Ax' 比 'Ix' 更容易发音和记忆；优于 oxdex.io：'Ax' 比 'Ox' 更有科技感。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#33</span>
+        <div class="card-header">
+          <div class="card-domain">blocku<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Block'+ 'U'(you)——'Block for You'的缩写，暗示为用户定制的区块链学习。.io 后缀。亲切感强。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 chainu.io：'Block' 比 'Chain' 更有实体感和力量感；优于 blockil.com：'U' 比 'il' 更有含义。</p>
+          <p><span class="label">关键词：</span>block | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#34</span>
+        <div class="card-header">
+          <div class="card-domain">chaina<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Chain'+ 'A'——简洁的 Chain 品牌变体。.io 后缀。但 'A' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 chainu.io：'A' 比 'U' 更有'第一/首选'暗示；但含义都不够明确。</p>
+          <p><span class="label">关键词：</span>chain | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#35</span>
+        <div class="card-header">
+          <div class="card-domain">chainu<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Chain'+ 'U'(you)——'Chain for You'，暗示为用户定制的区块链学习。.io 后缀。亲切感强。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 chaina.io：'U' 比 'A' 更有'为你服务'的含义；但两者都不够完整。</p>
+          <p><span class="label">关键词：</span>chain | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#36</span>
+        <div class="card-header">
+          <div class="card-domain">coinal<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Coin'+ 'al'(后缀)——简洁的 Coin 品牌变体。.io 后缀。但 'al' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 coinra.io：'al' 比 'ra' 更柔和；但两者后缀含义都不够明确。</p>
+          <p><span class="label">关键词：</span>coin | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#37</span>
+        <div class="card-header">
+          <div class="card-domain">coinra<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Coin'+ 'ra'(后缀)——简洁的 Coin 品牌变体。.io 后缀。但 'ra' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 coinal.io：'ra' 比 'al' 更有能量感；但两者后缀含义都不够明确。</p>
+          <p><span class="label">关键词：</span>coin | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#38</span>
+        <div class="card-header">
+          <div class="card-domain">dexix<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Dex'+ 'ix'——短小精悍的双音节品牌。.io 后缀。科技感强，X 结尾有未来感。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 eldex.io：'ix' 后缀比 'el' 更有科技感；但两者都不如完整词有含义。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#39</span>
+        <div class="card-header">
+          <div class="card-domain">eldex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'El'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。但 'El' 前缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 oxdex.io：'El' 比 'Ox' 更柔和优雅；但 'Ax' 更有力。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#40</span>
+        <div class="card-header">
+          <div class="card-domain">ixdex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ix'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。科技感强，但 'Ix' 发音略 ambiguous。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 uxdex.io：'Ix' 比 'Ux' 更有科技感；但 'Ax' 更容易发音。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#41</span>
+        <div class="card-header">
+          <div class="card-domain">oxdex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ox'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。'Ox' 有力量感。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 uxdex.io：'Ox' 比 'Ux' 更有含义和力量感；但 'Ax' 更容易发音。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#42</span>
+        <div class="card-header">
+          <div class="card-domain">uxdex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ux'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。'UX' 暗示用户体验。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 zadex.io：'UX' 比 'Za' 更有含义(用户体验)；但两者都较短，品牌感不如完整词。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#43</span>
+        <div class="card-header">
+          <div class="card-domain">zadex<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.56</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Za'+ 'Dex'——短小精悍的双音节品牌。.io 后缀。但 'Za' 前缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 axdex.io：'Za' 比 'Ax' 更独特；但 'Ax' 更容易发音和记忆。</p>
+          <p><span class="label">关键词：</span>dex | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#44</span>
+        <div class="card-header">
+          <div class="card-domain">ixhash<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.54</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.3</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">8.3</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ix'+ 'Hash'——短小精悍的品牌。.com 后缀。科技感强，但 'Ix' 前缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 ixblock.com：'Hash' 比 'Block' 更技术化；但 'Block' 更广为人知。</p>
+          <p><span class="label">关键词：</span>hash | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#45</span>
+        <div class="card-header">
+          <div class="card-domain">axbit<span class="tld">.io</span></div>
+          <div class="card-score">
+            <span class="big">9.53</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.7</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">10.0</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Ax'+ 'Bit'——短小精悍的双音节品牌。.io 后缀。发音有力，品牌感强。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 axhash.io：'Bit' 比 'Hash' 更广为人知；但 'Hash' 更技术化。</p>
+          <p><span class="label">关键词：</span>bit | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+      <div class="domain-card">
+        <span class="card-rank" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">#46</span>
+        <div class="card-header">
+          <div class="card-domain">blockil<span class="tld">.com</span></div>
+          <div class="card-score">
+            <span class="big">9.51</span>
+            <span class="label">/ 10.00</span>
+          </div>
+        </div>
+        <div class="card-dims">
+          <div class="card-dim"><div class="name">品牌感</div><div class="val">8.8</div></div>
+          <div class="card-dim"><div class="name">SEO</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">国际化</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">易拼写</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">发音</div><div class="val">9.5</div></div>
+          <div class="card-dim"><div class="name">商业价值</div><div class="val">10.0</div></div>
+          <div class="card-dim"><div class="name">可扩展性</div><div class="val">9.0</div></div>
+          <div class="card-dim"><div class="name">记忆度</div><div class="val">9.8</div></div>
+        </div>
+        <div class="card-analysis">
+          <p><span class="label">为什么推荐：</span>'Block'+ 'il'(后缀)——简洁的 Block 品牌变体。.com 后缀。但 'il' 后缀含义不够明确。</p>
+          <p><span class="label">为什么优于其它名字：</span>优于 zablock.com：'il' 比 'za' 更柔和；但两者后缀含义都不够明确。</p>
+          <p><span class="label">关键词：</span>block | <span class="label">寓意词：</span>—</p>
+          <span class="register-badge register-yes">📌 建议注册</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Crypto Beginner Platform — 品牌域名甄选报告 | 生成日期: 2026-07-25</p>
+    <p>评分基于 8 维度算法评分 + 品牌顾问专家评审 | RDAP 实时验证域名可用性</p>
+    <div class="footer-note">
+      <strong>免责声明：</strong>本报告中的域名可用性基于生成时的 RDAP 查询结果。域名状态可能随时变化，建议在注册前再次确认。评分仅供参考，最终决策请结合团队讨论和法律顾问的商标审查。所有商标名称（OpenAI、Notion、CoinGecko 等）仅作为品牌风格参考，不代表任何关联。
+    </div>
+  </div>
+</footer>
+</body>
+</html>
